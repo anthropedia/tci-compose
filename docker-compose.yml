@@ -14,8 +14,17 @@ services:
     image: gunicorn-server
     volumes:
       - ./tci-admin:/app
-      - ~/.ssh:/root/.ssh:ro
+      - ~/epidaurus/.ssh:/root/.ssh:ro
     links:
       - db
     ports:
       - 5001:80
+  researchers:
+    image: gunicorn-server
+    volumes:
+      - ./tci-researchers:/app
+      - ~/epidaurus/.ssh:/root/.ssh:ro
+    links:
+      - db
+    ports:
+      - 5002:80
