@@ -14,7 +14,7 @@ services:
     image: gunicorn-server
     volumes:
       - ./tci-admin:/app
-      - ~/epidaurus/.ssh:/root/.ssh:ro
+      - ~/.ssh:/root/.ssh:ro
     links:
       - db
     ports:
@@ -23,7 +23,7 @@ services:
     image: gunicorn-server
     volumes:
       - ./tci-researchers:/app
-      - ~/epidaurus/.ssh:/root/.ssh:ro
+      - ~/.ssh:/root/.ssh:ro
     links:
       - db
     ports:
