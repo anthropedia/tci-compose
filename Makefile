@@ -9,3 +9,6 @@ rebuild:  # <str>service
 
 destroy:
 	docker-compose -p tci down
+
+deploy:
+	ssh epidaurus 'cd ~/tci-compose && git pull && make run'
