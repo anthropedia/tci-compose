@@ -15,6 +15,7 @@ services:
     volumes:
       - ./tci-admin:/app
       - ~/.ssh:/root/.ssh:ro
+      - ./settings.json:/settings.json
     links:
       - db
     ports:
@@ -24,6 +25,7 @@ services:
     volumes:
       - ./tci-researchers:/app
       - ~/.ssh:/root/.ssh:ro
+      - ./settings.json:/settings.json
     links:
       - db
     ports:
@@ -33,6 +35,7 @@ services:
     volumes:
       - ./tci-online:/app
       - ~/.ssh:/root/.ssh:ro
+      - ./settings.json:/settings.json
     links:
       - db
     ports:
