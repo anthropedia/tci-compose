@@ -28,3 +28,12 @@ services:
       - db
     ports:
       - 5002:80
+  online:
+    image: gunicorn-server
+    volumes:
+      - ./tci-online:/app
+      - ~/.ssh:/root/.ssh:ro
+    links:
+      - db
+    ports:
+      - 5003:80
