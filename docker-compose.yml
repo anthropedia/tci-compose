@@ -40,3 +40,13 @@ services:
       - db
     ports:
       - 5003:80
+  professionals:
+    image: gunicorn-server
+    volumes:
+      - ./tci-professionals:/app
+      - ~/.ssh:/root/.ssh:ro
+      - ./settings.json:/settings.json
+    links:
+      - db
+    ports:
+      - 5004:80
