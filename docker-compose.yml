@@ -26,6 +26,7 @@ services:
       - ./tci-researchers:/app
       - ~/.ssh:/root/.ssh:ro
       - ./settings.json:/settings.json
+      - ./uploads:/app/uploads
     links:
       - db
     ports:
