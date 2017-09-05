@@ -10,12 +10,12 @@ services:
       - 12017
     ports:
       - 12017:27017
-      
+
   db-api:
     image: mongo
     command: mongod --auth
     volumes:
-      - ./data/db:/data/db
+      - ./data/db-api:/data/db
     expose:
       - 12018
     ports:
