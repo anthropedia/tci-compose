@@ -10,6 +10,17 @@ services:
       - 12017
     ports:
       - 12017:27017
+      
+  db-api:
+    image: mongo
+    command: mongod --auth
+    volumes:
+      - ./data/db:/data/db
+    expose:
+      - 12018
+    ports:
+      - 12018:27017
+
   admin:
     image: gunicorn-server
     volumes:
@@ -20,6 +31,7 @@ services:
       - db
     ports:
       - 5001:80
+
   researchers:
     image: gunicorn-server
     volumes:
@@ -31,6 +43,7 @@ services:
       - db
     ports:
       - 5002:80
+
   online:
     image: gunicorn-server
     volumes:
@@ -41,6 +54,7 @@ services:
       - db
     ports:
       - 5003:80
+
   professionals:
     image: gunicorn-server
     volumes:
@@ -51,3 +65,14 @@ services:
       - db
     ports:
       - 5004:80
+
+  api:
+    image: gunicorn-server
+    volumes:
+      - ./tci-api:/app
+      - ~/.ssh:/root/.ssh:ro
+      - ./settings.json:/settings.json
+    links:
+      - db-api
+    ports:
+      - 5005:80
