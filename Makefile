@@ -1,14 +1,16 @@
+compose=docker-compose -p tci
+
 help:
 	@echo "Shortcuts for project commands: run [<service>], rebuild <service>, destroy."
 
 run:  # [<str>service]
-	docker-compose -p tci up -d $(service)
+	${compose} up -d $(service)
 
 rebuild:  # <str>service
-	docker-compose stop $(service) && docker-compose rm -f $(service) && make run service=$(service)
+	${compose} stop $(service) && ${compose} rm -f $(service) && make run service=$(service)
 
 destroy:
-	docker-compose -p tci down
+	${compose} down
 
 deploy:
 	ssh epidaurus 'cd ~/tci-compose && git pull && make run'
